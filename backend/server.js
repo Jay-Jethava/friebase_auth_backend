@@ -1,30 +1,32 @@
-const express = require('express');
-const cors = require('cors');
-const middleware = require('./middleware');
+const express = require("express");
+const cors = require("cors");
+const middleware = require("./middleware");
+const { socialAuth } = require("./controllers/loginController");
 
 const app = express();
-const port = 5000;
+const port = 3001;
 
 app.use(cors());
 
-app.use(middleware.decodeToken);
+app.post("/testing/firebase/auth", socialAuth);
 
-app.get('/api/todos', (req, res) => {
-	return res.json({
-		todos: [
-			{
-				title: 'Task1',
-			},
-			{
-				title: 'Task2',
-			},
-			{
-				title: 'Task3',
-			},
-		],
-	});
+app.use(middleware.decodeToken);
+app.get("/api/todos", (req, res) => {
+  return res.json({
+    todos: [
+      {
+        title: "Task1",
+      },
+      {
+        title: "Task2",
+      },
+      {
+        title: "Task3",
+      },
+    ],
+  });
 });
 
 app.listen(port, () => {
-	console.log(`server is running on port ${port}`);
+  console.log(`server is running on port ${port}`);
 });
