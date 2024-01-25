@@ -8,25 +8,8 @@ const port = 3001;
 
 app.use(cors());
 
-app.use("/", (req, res) => res.send("Welcome..."));
 app.post("/testing/firebase/auth", socialAuth);
-
-app.use(middleware.decodeToken);
-app.get("/api/todos", (req, res) => {
-  return res.json({
-    todos: [
-      {
-        title: "Task1",
-      },
-      {
-        title: "Task2",
-      },
-      {
-        title: "Task3",
-      },
-    ],
-  });
-});
+app.use("/", (req, res) => res.send("Welcome..."));
 
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);

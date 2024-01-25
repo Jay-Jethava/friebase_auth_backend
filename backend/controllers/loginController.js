@@ -3,8 +3,6 @@ const firebase = require("firebase-admin");
 exports.socialAuth = async (req, res, next) => {
   console.log("payload", req.body);
 
-  return;
-
   firebase
     .auth()
     .verifyIdToken(req.body.firebaseToken)
