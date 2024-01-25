@@ -3,7 +3,10 @@ const firebase = require("firebase-admin");
 exports.socialAuth = async (req, res, next) => {
   console.log("payload", req.body);
 
-  return;
+  res.status(200).json({
+    status: "success",
+    message: "Login successful",
+  });
 
   firebase
     .auth()
