@@ -3,13 +3,13 @@ const firebase = require("firebase-admin");
 exports.socialAuth = async (req, res, next) => {
   console.log("payload", req.body);
 
+  return;
+
   firebase
     .auth()
     .verifyIdToken(req.body.firebaseToken)
     .then(async (firebaseUser) => {
       console.log(firebaseUser);
-
-      return;
 
       if (firebaseUser.email_verified !== true)
         return next(
