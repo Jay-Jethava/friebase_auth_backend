@@ -1,3 +1,7 @@
+const dotenv = require("dotenv");
+dotenv.config({
+  path: "./.env",
+});
 const express = require("express");
 const cors = require("cors");
 const middleware = require("./middleware");
